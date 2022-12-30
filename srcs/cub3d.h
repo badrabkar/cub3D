@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/28 21:04:46 by babkar           ###   ########.fr       */
+/*   Updated: 2022/12/30 12:53:37 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define S_KEY 1
 # define A_KEY 0
 # define D_KEY 2
+# define LEFT_ARROW_KEY 124
+# define RIGHT_ARROW_KEY 123
 # define GRID_SIZE 32
 # define WIDTH 257
 # define HEIGHT 257
@@ -46,14 +48,21 @@ typedef struct s_mlx
 
 typedef	struct s_player
 {
-	int	x;
-	int y;
-	int	turn;
-	int	walk;
+	double	x;
+	double y;
+	char	view;
 	double	rotation_angle;
 	double 	move_speed;
 	double	rotation_speed;
 }t_player;
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef struct s_map
 {
@@ -65,6 +74,7 @@ typedef struct s_map
 	t_color	ceiling;
 	t_mlx	mlx;
 	t_player player;
+	t_data	img;
 	int		nbr_colums;
 	int		nbr_lines;
 	char	**map;
@@ -91,9 +101,10 @@ int	    empty_line(char *line);
 
 t_map	parse(char **argv);
 
-void	draw_line(t_map map, int beginX, int beginY, int endX, int endY, int color);
+void	draw_line(t_map map, double beginX, double beginY, double endX, double endY, int color);
 
 
 void    print_map(t_map map);
 t_map player_init(t_map  map);
+void	ft_window(t_mlx *mlx);
 #endif

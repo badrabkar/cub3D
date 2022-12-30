@@ -6,7 +6,7 @@
 #    By: babkar <babkar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 23:52:21 by babkar            #+#    #+#              #
-#    Updated: 2022/12/28 21:05:15 by babkar           ###   ########.fr        #
+#    Updated: 2022/12/29 17:42:50 by babkar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIBFT_PATH = libft/
 HEADERS =
 LIBFT = $(addprefix $(LIBFT_PATH), libft.a)
 SRCS = srcs/main.c \
+srcs/window.c \
 srcs/parse_identifiers.c \
 srcs/parse_map.c \
 srcs/parse_second_identifiers.c \

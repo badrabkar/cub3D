@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 21:03:14 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/28 22:30:31 by babkar           ###   ########.fr       */
+/*   Updated: 2022/12/30 13:10:02 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 t_map player_init(t_map  map)
 {
-    map.player.x = 0;
-    map.player.y = 0;
-    map.player.turn = 0;
-    map.player.walk = 0;
-    map.player.rotation_angle = M_PI / 2;
-    map.player.rotation_speed = 8 * (M_PI / 180);
+    map.player.rotation_speed = 12;
+    // map.player.rotation_angle =  map.player.rotation_speed * M_PI / 12;
+    if (map.player.view == 'N')
+        map.player.rotation_angle = 3 * M_PI / 2;
+    if (map.player.view == 'S')
+        map.player.rotation_angle = M_PI / 2;
+    if (map.player.view == 'E')
+        map.player.rotation_angle = 2 * M_PI;
+    if (map.player.view == 'W')
+        map.player.rotation_angle = M_PI;
     map.player.move_speed = 1.0;
     return (map);
 }
