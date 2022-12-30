@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:58:50 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/30 13:14:05 by babkar           ###   ########.fr       */
+/*   Updated: 2022/12/30 19:09:17 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,18 +113,26 @@ t_map *ft_move_left(t_map *map)
     return (map);
 }
 
-t_map   *turn_right(t_map *map)
+t_map   *turn_left(t_map *map)
 {
-    map->player.rotation_speed = ((int)map->player.rotation_speed + 23) % 24;
-    map->player.rotation_angle += map->player.rotation_speed * M_PI / 12;
+    if ((int)map->player.rotation_angle == (int)(2 * M_PI))
+    {
+        map->player.rotation_angle = 0;
+        return (map);
+    }
+    map->player.rotation_angle += map->player.rotation_speed;
     return (map); 
 }
 
-t_map   *turn_left(t_map *map)
+t_map   *turn_right(t_map *map)
 {
-    map->player.rotation_speed = ((int)map->player.rotation_speed + 1) % 24;
-    map->player.rotation_angle = map->player.rotation_speed * M_PI / 12;
-    return (map);
+    if ((int)map->player.rotation_angle == 0)
+    {
+        map->player.rotation_angle = 2 * M_PI;
+        return (map);
+    }
+    map->player.rotation_angle -= map->player.rotation_speed;
+    return (map); 
 }
 
 int	ft_move(int keycode, t_map *map)
@@ -148,8 +156,6 @@ int	ft_move(int keycode, t_map *map)
 	}
 	return (0);
 }
-
-
 
 int ft_function(t_map *map)
 {
