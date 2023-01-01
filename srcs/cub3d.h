@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/30 12:53:37 by babkar           ###   ########.fr       */
+/*   Updated: 2022/12/31 21:36:24 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ typedef struct s_map
 	int		nbr_colums;
 	int		nbr_lines;
 	char	**map;
+	int		walk_ws;
+	int		walk_ad;
+	int		rotation;
 }t_map;
 
 int	    parse_north_texture(char *texture, t_map *map);
@@ -107,4 +110,10 @@ void	draw_line(t_map map, double beginX, double beginY, double endX, double endY
 void    print_map(t_map map);
 t_map player_init(t_map  map);
 void	ft_window(t_mlx *mlx);
+int  render_mini_map(t_map *map);
+void    draw_line(t_map map, double beginX, double beginY, double endX, double endY, int color);
+void    draw_square(t_map map, double i, double j, int color);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_map *update_player_position(t_map *map);
+
 #endif

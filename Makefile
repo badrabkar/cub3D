@@ -6,7 +6,7 @@
 #    By: babkar <babkar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 23:52:21 by babkar            #+#    #+#              #
-#    Updated: 2022/12/29 17:42:50 by babkar           ###   ########.fr        #
+#    Updated: 2022/12/31 16:00:05 by babkar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,18 @@ LIBFT_PATH = libft/
 HEADERS =
 LIBFT = $(addprefix $(LIBFT_PATH), libft.a)
 SRCS = srcs/main.c \
-srcs/window.c \
+srcs/draw_line.c \
+srcs/draw_square.c \
+srcs/my_mlx_pixel_put.c \
 srcs/parse_identifiers.c \
 srcs/parse_map.c \
 srcs/parse_second_identifiers.c \
 srcs/parse_utils.c \
 srcs/parse.c \
-srcs/draw_line.c \
 srcs/player_init.c \
+srcs/render_mini_map.c \
+srcs/update_player_position.c \
+srcs/window.c \
 utils/puterr.c \
 utils/print_map.c \
 utils/ft_realloc.c \

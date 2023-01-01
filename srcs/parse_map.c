@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 05:01:20 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/26 03:02:41 by babkar           ###   ########.fr       */
+/*   Updated: 2022/12/31 22:55:50 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	parse_map(char **map_str, t_map *map)
 		for (int f = 0; f < longest_line; f++)
 		{
 			if (map_str[i][f] == ' ' || f > (int)strlen(map_str[i]) - 1)
-				map->map[i][f] = '1';
+				map->map[i][f] = '2';
 			else
 				map->map[i][f] = map_str[i][f];
 		}
