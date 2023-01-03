@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_second_identifiers.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 05:00:55 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/24 05:01:10 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/03 16:40:53 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	parse_color_ceiling(char *color, t_color *ceiling)
 	if (ceiling->green < 0 || ceiling->green > 255)
 		puterr();
 	ceiling->blue =  ft_atoi(splited[2]);
-	if (ceiling->red < 0 || ceiling->red > 255)
+	if (ceiling->blue < 0 || ceiling->blue > 255)
 		puterr();
 	done = 1;
 	return (1);

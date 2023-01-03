@@ -3,14 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   parse_identifiers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:53:38 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/03 12:19:58 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/03 16:23:00 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	count_point(char *str)
+{
+	int	i;
+	int	cp;
+
+	cp = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '.')
+			cp++;
+		i++;
+	}
+	if (!cp || cp != 1)
+		return (0);
+	return (1);
+}
+
+int	check_extension(char *str)
+{
+	char	*s;
+	size_t		i;
+
+	i = ft_strlen(str) - 4;
+	s = ft_strdup(".xpm");
+	if (count_point(str))
+	{
+		if (!ft_strncmp(str + i, s, 4))
+			return (1);
+	}
+	return (0);
+}
 
 int	parse_north_texture(char *texture, t_map *map)
 {
@@ -24,6 +57,11 @@ int	parse_north_texture(char *texture, t_map *map)
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
+	if (!check_extension(texture))
+	{
+		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
+		exit (1);
+	}
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
@@ -43,6 +81,11 @@ int	parse_south_texture(char *texture, t_map *map)
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
+	if (!check_extension(texture))
+	{
+		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
+		exit (1);
+	}
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
@@ -62,6 +105,11 @@ int	parse_west_texture(char *texture, t_map *map)
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
+	if (!check_extension(texture))
+	{
+		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
+		exit (1);
+	}
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
@@ -81,6 +129,11 @@ int	parse_east_texture(char *texture, t_map *map)
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
+	if (!check_extension(texture))
+	{
+		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
+		exit (1);
+	}
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
@@ -114,6 +167,5 @@ t_map	parse_identifiers(char *line, int fd, t_map map)
 	}
 	if (counter != 6)
 		puterr();
-	printf("%d\n", counter);
 	return (map);
 }
