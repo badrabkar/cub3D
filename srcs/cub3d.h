@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/31 21:36:24 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/02 23:51:28 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define D_KEY 2
 # define LEFT_ARROW_KEY 124
 # define RIGHT_ARROW_KEY 123
-# define GRID_SIZE 32
+# define GRID_SIZE 50
 # define WIDTH 257
 # define HEIGHT 257
 # include <math.h>
@@ -62,6 +62,8 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		size;
+	
 }				t_data;
 
 typedef struct s_map

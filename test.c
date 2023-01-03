@@ -24,7 +24,7 @@ int equal(double a, double b)
 int main()
 {
     float a = cos(134 * M_PI / 90);
-        printf("%f\n", a);
+        printf("%f\n", a / 0);
     return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 05:01:20 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/31 22:55:50 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/01 19:07:33 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	check_top_map(t_map *map)
 			puterr();
 		i++;
 	}
-	
 }
 
 void	check_bottom_map(t_map *map)
