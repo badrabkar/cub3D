@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:58:52 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/28 21:00:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/03 12:46:30 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    print_map(t_map map)
 {
-    for (int i = 0; i < 14; i++)
+    for (int i = 0; i < map.nbr_lines; i++)
     {
         printf("|%s|\n", map.map[i]);
     }

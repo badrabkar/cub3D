@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:53:38 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/24 05:00:05 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/03 12:19:58 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ t_map	parse_identifiers(char *line, int fd, t_map map)
 	}
 	if (counter != 6)
 		puterr();
+	printf("%d\n", counter);
 	return (map);
 }

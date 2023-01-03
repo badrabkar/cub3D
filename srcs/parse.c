@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:54:14 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/26 03:02:05 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/03 12:53:22 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,20 @@ t_map	parse(char **argv)
 	line = skip_empty_line(line, fd);
 	while(line)
 	{
-		check_line(line, &map);
+		map.nbr_lines++;
 		if (empty_line(line))
             puterr();
+		printf("line : %s\n", line);
 		map_str = read_map(line, map_str);
 		line = get_next_line(fd);
 	}
+	int i = 0;
+	while (map_str[i])
+	{
+		printf("%s\n", map_str[i]);
+		i++;
+	}
+	
 	parse_map(map_str, &map);
 	return (map);
 }

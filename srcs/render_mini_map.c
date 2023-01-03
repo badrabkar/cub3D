@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:49:17 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/03 10:07:20 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/03 12:16:07 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,14 @@ int equal(double a, double b)
 // {
 //     int fov = 60;
 //     double ray_beginX, ray_beginY, ray_endX, ray_endY;
+
+
+
+//     ray_beginX = map->player.x;
+//     ray_beginY = map->player.y;
+    
 //     double  deltaDistY, deltaDistX;
-//     deltaDistX = sqrt(1 + pow(ray_beginX, 2) / pow(ray_beginY,2));    
+//     deltaDistX = sqrt(1 + pow(ray_beginX, 2) / pow(ray_beginY,2)); 
 // }
 
 int  render_mini_map(t_map *map)

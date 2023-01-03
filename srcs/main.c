@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:58:50 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/31 21:17:13 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/03 13:23:17 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_reset(int keycode, t_map *map)
 t_map   get_info(t_map map)
 {
     mlx_clear_window(map.mlx.mlx, map.mlx.win);
-    for (int i = 0; i < 14; i++)
+    for (int i = 0; i < map.nbr_lines; i++)
     {
         for (int j = 0; map.map[i][j]; j++)
         {
@@ -82,6 +82,7 @@ int main(int argc, char **argv)
     if (argc != 2)
         return (1);
     map = parse(argv);
+    printf("%d\n", map.nbr_lines);
     print_map(map);
 	ft_window(&map.mlx);
     map = get_info(map);
