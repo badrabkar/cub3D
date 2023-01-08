@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:53:38 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/03 16:23:00 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:55:01 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_extension(char *str)
 	size_t		i;
 
 	i = ft_strlen(str) - 4;
-	s = ft_strdup(".xpm");
+	s = ".xpm";
 	if (count_point(str))
 	{
 		if (!ft_strncmp(str + i, s, 4))
@@ -45,11 +45,19 @@ int	check_extension(char *str)
 	return (0);
 }
 
+void	check_path(char *path)
+{
+	int fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		puterr();
+}
+
 int	parse_north_texture(char *texture, t_map *map)
 {
 	int	i;
 	static int	done;
-	int	fd;
 	
 	if (done == 1)
 		puterr();
@@ -62,9 +70,7 @@ int	parse_north_texture(char *texture, t_map *map)
 		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
 		exit (1);
 	}
-	fd = open(texture, O_RDONLY);
-	// if (fd == -1)
-	// 	puterr();
+	// check_path(texture);
 	map->north_texture = texture;
 	return (1);
 }
@@ -73,8 +79,7 @@ int	parse_south_texture(char *texture, t_map *map)
 {
 	int	i;
 	static int	done;
-	int			fd;
-	
+
 	if (done == 1)
 		puterr();
 	i = 2;
@@ -86,9 +91,7 @@ int	parse_south_texture(char *texture, t_map *map)
 		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
 		exit (1);
 	}
-	fd = open(texture, O_RDONLY);
-	// if (fd == -1)
-	// 	puterr();
+	// check_path(texture);
 	map->north_texture = texture;
 	return (1);
 }
@@ -97,7 +100,6 @@ int	parse_west_texture(char *texture, t_map *map)
 {
 	int	i;
 	static int	done;
-	int			fd;
 
 	if (done == 1)
 		puterr();
@@ -110,9 +112,7 @@ int	parse_west_texture(char *texture, t_map *map)
 		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
 		exit (1);
 	}
-	fd = open(texture, O_RDONLY);
-	// if (fd == -1)
-	// 	puterr();
+	// check_path(texture);
 	map->north_texture = texture;
 	return (1);
 }
@@ -121,7 +121,6 @@ int	parse_east_texture(char *texture, t_map *map)
 {
 	int	i;
 	static int	done;
-	int			fd;
 	
 	if (done == 1)
 		puterr();
@@ -134,9 +133,7 @@ int	parse_east_texture(char *texture, t_map *map)
 		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
 		exit (1);
 	}
-	fd = open(texture, O_RDONLY);
-	// if (fd == -1)
-	// 	puterr();
+	// check_path(texture);
 	map->north_texture = texture;
 	return (1);
 }

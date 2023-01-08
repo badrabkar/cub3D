@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/02 23:51:28 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/08 01:24:54 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_map	parse_identifiers(char *line, int fd, t_map map);
 
 char	**read_map(char *line, char **map);
 void	check_line(char *line, t_map *map);
-void	parse_map(char **map_str, t_map *map);
+t_map	*parse_map(char **map_str, t_map *map);
 
 int	    parse_color_floor(char *color, t_color *floor);
 int	    parse_color_ceiling(char *color, t_color *ceiling);
@@ -105,6 +105,18 @@ char    *skip_empty_line(char *line, int fd);
 int	    empty_line(char *line);
 
 t_map	parse(char **argv);
+int skip_first_spaces(char **str, int i);
+int skip_backward_spaces(char **str, int i);
+int skip_inner_spaces(char **str, int i, int j);
+int skip_inner_spaces1(char **str, int i, int j);
+void check_map(char **str, t_map *map);
+void check_ext(char *av);
+int	check_characters(char **str);
+int ft_check_player(char **str);
+void check(char **str);
+int	check_walls(char *str);
+int check_spaces(char **str);
+int check_space(char **str);
 
 void	draw_line(t_map map, double beginX, double beginY, double endX, double endY, int color);
 
