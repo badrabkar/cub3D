@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:54:14 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/07 23:39:21 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:25:55 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_map	parse(char **argv)
 	}
 	map = parse_identifiers(line, fd, map);
 	line = skip_empty_line(line, fd);
+	if (!line)
+		puterr();
 	while(line)
 	{
 		map.nbr_lines++;
