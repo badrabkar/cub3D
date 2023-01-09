@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:30:17 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/08 01:28:21 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:10:55 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,14 @@ int check_space(char **str)
 		{
 			if (str[i][j] == '2')
 			{
-				if (str[i][j + 1] || str[i][j - 1] || str[i + 1][j] || str[i - 1][j])
-					if (str[i][j + 1] == '0' || str[i][j - 1] == '0'
-						|| str[i + 1][j] == '0' || str[i - 1][j] == '0')
-				return (0);
+				if (str[i][j + 1] && str[i][j + 1] == '0')
+					return (0);
+				if (str[i][j - 1] && str[i][j - 1] == '0')
+					return (0);
+				if (str[i + 1] && str[i + 1][j] == '0')
+					return (0);
+				if (str[i - 1] && str[i - 1][j] == '0')
+					return (0);
 			}
 			j++;
 		}

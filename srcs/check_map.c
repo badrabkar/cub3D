@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 18:44:34 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/08 01:31:17 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:02:20 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ int	check_characters(char **str)
 		while (str[i][j])
 		{
 			if (str[i][j] != 'N' && str[i][j] != 'S' && str[i][j] != 'W'
-				&& str[i][j] != 'E' && str[i][j] != '1' && str[i][j] != '0' && str[i][j] != '2')
+				&& str[i][j] != 'E' && str[i][j] != '1'
+					&& str[i][j] != '0' && str[i][j] != '2')
 				return (0);
 			j++;
 		}
