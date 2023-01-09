@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 18:44:34 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/09 15:02:20 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:01:42 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void check(char **str)
 			puterr();
 		j++;
 	}
-
 }
 
 int ft_check_player(char **str)

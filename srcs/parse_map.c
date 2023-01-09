@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 05:01:20 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/07 23:48:35 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:54:15 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_map*	parse_map(char **map_str, t_map *map)
 			longest_line = strlen(map_str[i]);
 		i++;
 	}
+	map->nbr_colums = longest_line;
 	i = 0;
 	map->map = (char ** )calloc(map->nbr_lines + 1, sizeof(char *));
 	if (!map->map)

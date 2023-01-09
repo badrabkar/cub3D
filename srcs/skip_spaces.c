@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:30:17 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/09 15:10:55 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:03:48 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ int skip_backward_spaces(char **str, int i)
 
 int skip_inner_spaces(char **str, int i, int j)
 {
-	while (str[i][j] && str[i][j] == '2')
+	while (str[i] && str[i][j] == '2')
 		i++;
-	if (str[i][j] != '1')
+	if (str[i] && str[i][j] != '1')
 		return (0);
 	return (1);
 }
 
 int skip_inner_spaces1(char **str, int i, int j)
 {
-	while (str[i][j] && str[i][j] == '2')
+	while (str[i] && str[i][j] == '2')
 		i--;
-	if (str[i][j] != '1')
+	if (str[i] && str[i][j] != '1')
 		return (0);
 	return (1);
 }

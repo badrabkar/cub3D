@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mini_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:49:17 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/03 12:16:07 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/09 15:55:34 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int  render_mini_map(t_map *map)
     if (map->img.img)
         mlx_destroy_image(map->mlx.mlx, map->img.img);
     mlx_clear_window(map->mlx.mlx, map->mlx.win);
-    map->img.img = mlx_new_image(map->mlx.mlx, 1920, 1080);
+    map->img.img = mlx_new_image(map->mlx.mlx, map->nbr_colums * GRID_SIZE, map->nbr_lines * GRID_SIZE);
 	map->img.addr = mlx_get_data_addr(map->img.img, &map->img.bits_per_pixel, &map->img.line_length, &map->img.endian);
     for (int i = 0; i < map->nbr_lines; i++)
     {
@@ -61,12 +61,12 @@ int  render_mini_map(t_map *map)
                 draw_square(*map, i,j, 0x000000);
             }
             x = j * GRID_SIZE;
-            draw_line(*map, x, y , x + GRID_SIZE,y , 0x808080);
-            draw_line(*map, x, y , x, y + GRID_SIZE, 0x808080);   
+            // draw_line(*map, x, y , x + GRID_SIZE,y , 0x808080);
+            // draw_line(*map, x, y , x, y + GRID_SIZE, 0x808080);   
         }
     }
-    draw_line(*map, x + GRID_SIZE, 0 , x + GRID_SIZE, GRID_SIZE * map->nbr_lines, 0x808080);
-    draw_line(*map, 0, y + GRID_SIZE, x + GRID_SIZE, GRID_SIZE + y, 0x808080);   
+    // draw_line(*map, x + GRID_SIZE, 0 , x + GRID_SIZE, GRID_SIZE * map->nbr_lines, 0x808080);
+    // draw_line(*map, 0, y + GRID_SIZE, x + GRID_SIZE, GRID_SIZE + y, 0x808080);   
     if (map->map[(int)map->player.y][(int)old_playerX] == '1' ||  map->map[(int)old_playerY][(int)map->player.x] == '1'|| map->map[(int)map->player.y][(int)map->player.x] == '2')
     {
         // if (cos(map->player.rotation_angle) > 0 && cos(map->player.rotation_angle) < 1 && !equal(cos(map->player.rotation_angle), 0))

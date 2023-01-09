@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/08 01:24:54 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:52:58 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	draw_line(t_map map, double beginX, double beginY, double endX, double endY
 
 void    print_map(t_map map);
 t_map player_init(t_map  map);
-void	ft_window(t_mlx *mlx);
+void	ft_window(t_mlx *mlx, t_map map);
 int  render_mini_map(t_map *map);
 void    draw_line(t_map map, double beginX, double beginY, double endX, double endY, int color);
 void    draw_square(t_map map, double i, double j, int color);
