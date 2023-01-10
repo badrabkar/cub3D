@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 01:25:42 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/28 21:01:56 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/10 10:31:57 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-void    puterr(void);
+void    puterr(char *str);
 char	**ft_realloc(char **str, int size);
 #endif

@@ -6,7 +6,7 @@
 #    By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 23:52:21 by babkar            #+#    #+#              #
-#    Updated: 2023/01/07 22:55:47 by bmaaqoul         ###   ########.fr        #
+#    Updated: 2023/01/10 10:42:30 by bmaaqoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ gnl/get_next_line.c \
 gnl/get_next_line_utils.c \
 srcs/check_map.c \
 srcs/skip_spaces.c \
+srcs/check_map_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

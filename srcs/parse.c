@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:54:14 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/09 18:25:55 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/10 10:48:30 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,16 @@ t_map	parse(char **argv)
 	map_str = NULL;
 	fd = open(argv[1], O_RDWR);
 	if (fd == -1)
-	{
-		puts("fd error\n");
-		exit(1);
-	}
+		puterr("fd error\n");
 	map = parse_identifiers(line, fd, map);
 	line = skip_empty_line(line, fd);
 	if (!line)
-		puterr();
+		puterr("map order reversed\n");
 	while(line)
 	{
 		map.nbr_lines++;
 		if (empty_line(line))
-            puterr();
+            puterr("empty line\n");
 		map_str = read_map(line, map_str);
 		line = get_next_line(fd);
 	}

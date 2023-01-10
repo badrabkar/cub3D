@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:53:38 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/09 18:21:24 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/10 10:36:57 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_extension(char *str)
 	size_t		i;
 
 	i = ft_strlen(str) - 4;
-	s = ft_strdup(".xpm");
+	s = ".xpm";
 	if (count_point(str))
 	{
 		if (!ft_strncmp(str + i, s, 4))
@@ -52,16 +52,13 @@ int	parse_north_texture(char *texture, t_map *map)
 	int	fd;
 	
 	if (done == 1)
-		puterr();
+		puterr("check the textures again please\n");
 	i = 2;
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
 	if (!check_extension(texture))
-	{
-		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
-		exit (1);
-	}
+		puterr("Check the Extension please!\n");
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
@@ -77,16 +74,13 @@ int	parse_south_texture(char *texture, t_map *map)
 	int			fd;
 	
 	if (done == 1)
-		puterr();
+		puterr("check the textures again please\n");
 	i = 2;
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
 	if (!check_extension(texture))
-	{
-		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
-		exit (1);
-	}
+		puterr("Check the Extension please!\n");
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
@@ -102,16 +96,13 @@ int	parse_west_texture(char *texture, t_map *map)
 	int			fd;
 
 	if (done == 1)
-		puterr();
+		puterr("check the textures again please\n");
 	i = 2;
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
 	if (!check_extension(texture))
-	{
-		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
-		exit (1);
-	}
+		puterr("Check the Extension please!\n");
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
@@ -127,16 +118,13 @@ int	parse_east_texture(char *texture, t_map *map)
 	int			fd;
 	
 	if (done == 1)
-		puterr();
+		puterr("check the textures again please\n");
 	i = 2;
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
 	if (!check_extension(texture))
-	{
-		ft_putstr_fd("Error\nCheck the Extension please!\n", 2);
-		exit (1);
-	}
+		puterr("Check the Extension please!\n");
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
@@ -170,7 +158,7 @@ t_map	parse_identifiers(char *line, int fd, t_map map)
 		line = get_next_line(fd);
 	}
 	if (counter != 6)
-		puterr();
+		puterr("check the map again please\n");
 	// printf("%d\n", counter);
 	return (map);
 }
