@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 18:44:34 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/10 10:50:24 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:42:47 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ void check(char **str)
 		puterr("enter a valid map!\n");
 	while (str[i])
 		i++;
+	i--;
 	while (str[i][++j])
 	{
-		if (!skip_inner_spaces1(str, i - 1, j))
+		if (!skip_inner_spaces1(str, i, j))
 			puterr("enter a valid map!\n");
 	}
 	if (!ft_check_player(str) || !check_characters(str))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_player_position.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:58:44 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/01 12:34:13 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/10 11:33:40 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,10 @@ t_map *update_player_position(t_map *map)
         map->player.x += cos(map->player.rotation_angle) * map->player.move_speed * map->walk_ws;
         map->player.y += sin(map->player.rotation_angle) * map->player.move_speed * map->walk_ws;
     }
-    if (map->walk_ad == -1)
-    {
-        map->player.x -= sin(map->player.rotation_angle) * map->player.move_speed;
-        map->player.y += cos(map->player.rotation_angle) * map->player.move_speed;
-    }
     if (map->walk_ad == 1)
     {
-        map->player.x += sin(map->player.rotation_angle) * map->player.move_speed;
-        map->player.y -= cos(map->player.rotation_angle) * map->player.move_speed;
+        map->player.x += sin(map->player.rotation_angle) * map->player.move_speed * map->walk_ad;
+        map->player.y -= cos(map->player.rotation_angle) * map->player.move_speed * map->walk_ad;
     }
     return (map);
 }
