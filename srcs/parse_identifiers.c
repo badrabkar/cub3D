@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:53:38 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/10 10:36:57 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:06:41 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	parse_north_texture(char *texture, t_map *map)
 	// if (fd == -1)
 	// 	puterr();
 	map->north_texture = texture;
+	free (texture);
 	done = 1;
 	return (1);
 }
@@ -84,7 +85,8 @@ int	parse_south_texture(char *texture, t_map *map)
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
-	map->north_texture = texture;
+	map->south_texture = texture;
+	free (texture);
 	done = 1;
 	return (1);
 }
@@ -106,7 +108,8 @@ int	parse_west_texture(char *texture, t_map *map)
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
-	map->north_texture = texture;
+	map->west_texture = texture;
+	free (texture);
 	done = 1;
 	return (1);
 }
@@ -128,7 +131,8 @@ int	parse_east_texture(char *texture, t_map *map)
 	fd = open(texture, O_RDONLY);
 	// if (fd == -1)
 	// 	puterr();
-	map->north_texture = texture;
+	map->east_texture = texture;
+	free (texture);
 	done = 1;
 	return (1);
 }
@@ -155,10 +159,11 @@ t_map	parse_identifiers(char *line, int fd, t_map map)
 			counter += parse_east_texture(line, &map);
 		if (counter == 6)
 			break;
+		free (line);
 		line = get_next_line(fd);
 	}
+	free (line);
 	if (counter != 6)
 		puterr("check the map again please\n");
-	// printf("%d\n", counter);
 	return (map);
 }

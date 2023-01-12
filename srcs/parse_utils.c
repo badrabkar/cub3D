@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:52:15 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/24 05:10:26 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:09:10 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char *skip_empty_line(char *line, int fd)
 	{
 		if (!empty_line(line))
 			break;
+		free (line);
 		line = get_next_line(fd);
 		if (!line)
             break;

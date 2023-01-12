@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 01:25:42 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/12 15:37:10 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2023/01/12 14:14:35 by bmaaqoul          #+#    #+#             */
+/*   Updated: 2023/01/12 14:15:36 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "utils.h"
 
-# include "../libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+char	**ft_free(char **tab)
+{
+    int i;
 
-void    puterr(char *str);
-char	**ft_realloc(char **map, int size);
-char	**ft_free(char **tab);
-#endif
+    i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	tab = NULL;
+	return (NULL);
+}

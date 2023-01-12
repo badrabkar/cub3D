@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:58:50 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/09 15:53:18 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:37:52 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int main(int argc, char **argv)
     
     if (argc != 2)
         return (1);
+    // printf("%d\n", map.nbr_lines);
     map = parse(argv);
-    printf("%d\n", map.nbr_lines);
     print_map(map);
 	ft_window(&map.mlx, map);
     map = get_info(map);

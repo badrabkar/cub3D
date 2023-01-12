@@ -6,7 +6,7 @@
 #    By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 23:52:21 by babkar            #+#    #+#              #
-#    Updated: 2023/01/10 10:42:30 by bmaaqoul         ###   ########.fr        #
+#    Updated: 2023/01/12 14:16:32 by bmaaqoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ srcs/window.c \
 utils/puterr.c \
 utils/print_map.c \
 utils/ft_realloc.c \
+utils/ft_free.c \
 gnl/get_next_line.c \
 gnl/get_next_line_utils.c \
 srcs/check_map.c \

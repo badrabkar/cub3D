@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/09 15:52:58 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:10:12 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_map	parse_identifiers(char *line, int fd, t_map map);
 
 char	**read_map(char *line, char **map);
 void	check_line(char *line, t_map *map);
-t_map	*parse_map(char **map_str, t_map *map);
+void	parse_map(char **map_str, t_map *map);
 
 int	    parse_color_floor(char *color, t_color *floor);
 int	    parse_color_ceiling(char *color, t_color *ceiling);

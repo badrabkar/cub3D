@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 05:01:20 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/09 18:24:11 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:09:59 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**read_map(char *line, char **map)
 	return (map);
 }
 
-t_map*	parse_map(char **map_str, t_map *map)
+void	parse_map(char **map_str, t_map *map)
 {
 	int	i;
 	int	longest_line;
@@ -58,5 +58,5 @@ t_map*	parse_map(char **map_str, t_map *map)
 		}
 		i++;
 	}
-	return (map);
+	// return (map);
 }
