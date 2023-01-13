@@ -6,7 +6,7 @@
 #    By: babkar <babkar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 23:52:21 by babkar            #+#    #+#              #
-#    Updated: 2023/01/05 18:06:17 by babkar           ###   ########.fr        #
+#    Updated: 2023/01/12 22:42:21 by babkar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ LIBFT_PATH = libft/
 HEADERS = libft/libft.h srcs/cub3d.h utils/utils.h
 LIBFT = $(addprefix $(LIBFT_PATH), libft.a)
 SRCS = srcs/main.c \
+srcs/check_map_utils.c \
+srcs/check_map.c \
 srcs/draw_line.c \
 srcs/draw_square.c \
 srcs/my_mlx_pixel_put.c \
@@ -27,10 +29,14 @@ srcs/parse_utils.c \
 srcs/parse.c \
 srcs/player_init.c \
 srcs/render_mini_map.c \
+srcs/render.c \
+srcs/skip_spaces.c \
 srcs/update_player_position.c \
 srcs/window.c \
 utils/degree_to_radian.c \
+utils/distance_between_two_points.c \
 utils/ft_realloc.c \
+utils/ft_free.c \
 utils/print_map.c \
 utils/puterr.c \
 utils/get_next_line.c \

@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 01:25:42 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/05 18:36:54 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/12 22:42:31 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@
 # include <stdlib.h>
 # include <math.h>
 
-void    puterr(void);
+char	**ft_free(char **tab);
+double  distance_between_two_points(double a_x, double a_y, double b_x, double b_y);
+void    puterr(char *str);
 char	**ft_realloc(char **str, int size);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*get_next_line(int fd);

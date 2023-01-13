@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   distance_between_two_points.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 01:25:02 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/12 18:14:24 by babkar           ###   ########.fr       */
+/*   Created: 2023/01/12 22:16:37 by babkar            #+#    #+#             */
+/*   Updated: 2023/01/12 22:22:05 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-char	**ft_realloc(char **map, int size)
+double  distance_between_two_points(double a_x, double a_y, double b_x, double b_y)
 {
-    char **new_map;
-	int		i;
-	
-	i = 0;
-	if (map == NULL)
-		return (char **)malloc((size + 1) * sizeof(char *));
-	if (size == 0)
-		return NULL;
-	new_map = (char **)malloc((size + 1) * sizeof(char *));
-	if (!new_map)
-		exit(1);
-	while (i < size)
-	{
-		new_map[i] = map[i];
-		i++;
-	}
-	new_map[size] = NULL;
-	free(map);
-	return (new_map);
+    return (sqrt(pow(b_x - a_x, 2) + pow(b_y - a_y, 2)));
 }

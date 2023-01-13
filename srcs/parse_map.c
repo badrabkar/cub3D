@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 05:01:20 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/07 23:50:12 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/12 17:56:01 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**read_map(char *line, char **map)
 	return (map);
 }
 
-void	parse_map(char **map_str, t_map *map)
+t_map *parse_map(char **map_str, t_map *map)
 {
 	int	i;
 	int	longest_line;
@@ -58,4 +58,5 @@ void	parse_map(char **map_str, t_map *map)
 		}
 		i++;
 	}
+	return (map);
 } 

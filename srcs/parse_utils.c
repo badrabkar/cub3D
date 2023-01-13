@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:52:15 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/03 15:25:11 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/12 18:52:26 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char *skip_empty_line(int fd)
 	{
 		if (!empty_line(line))
 			break;
+		free (line);
 		line = get_next_line(fd);
 		if (!line)
             break;

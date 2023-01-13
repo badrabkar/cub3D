@@ -6,14 +6,16 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 01:25:29 by babkar            #+#    #+#             */
-/*   Updated: 2022/12/24 01:33:59 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/12 17:39:23 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void    puterr(void)
+void    puterr(char *str)
 {
-    write(2, "Error\n", 6);
+    ft_putstr_fd("Error\n", 2);
+    if (str)
+        ft_putstr_fd(str, 2);
     exit(1);
 }

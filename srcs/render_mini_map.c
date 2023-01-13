@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:49:17 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/09 14:07:34 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/12 22:55:33 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,96 +16,82 @@ int equal(double a, double b)
 {
     return fabs(a - b) < 1e-4;
 }
-
-double  normalizeAngle(double angle)
+ 
+t_map   *cast_ray(t_map *map, double ray_angle)
 {
-    // angle = remainder(angle, 2 * M_PI);
-    angle = fmod(angle, 2 * M_PI);
-    if (angle < 0)
-    {
-        angle = angle + 2 * M_PI;
-    }
-    return angle;
-}
-
-int	iswall(t_map *r, double new_x, double new_y)
-{
-	int	x;
-	int	y;
-	int	line;
-
-	if (new_y > 0 && floor(new_y) < r->nbr_lines)
-		line = ft_strlen(r->map[(int)(new_y)]);
-	if (new_y < 0 || floor(new_y) > r->nbr_lines \
-	|| new_x < 0 || (new_x) > line)
-		return (1);
-	x = floor(new_x );
-	y = floor(new_y );
-	if (r->map[y] && r->map[y][x] \
-	&& (r->map[y][x] == '1' \
-	|| r->map[y][x] == ' ' \
-	|| r->map[y][x] == '\0'))
-		return (1);
-	return (0);
-}
-
-t_map   *cast_ray(t_map *map)
-{
-    double  x_steps;
-    double  y_steps;
+    double  angle_cos = cos(ray_angle);
+    double  angle_sin = sin(ray_angle);
+    double  next_horizantal_intersection_x = 0;
+    double  next_horizantal_intersection_y = 0;
+    int step;
     
-    y_steps = 1;
-    x_steps = y_steps / tan(map->ray.ray_angle);
-    map->ray.ray_angle = normalizeAngle(map->ray.ray_angle);
-
-    
-    map->ray.begin_y = floor(map->player.y);
-    if (sin(map->ray.ray_angle) < 0)
+    step = 0;
+    next_horizantal_intersection_x = map->player.x;
+    next_horizantal_intersection_y = map->player.y;
+    while (next_horizantal_intersection_x <= map->nbr_colums * GRID_SIZE && next_horizantal_intersection_y <= map->nbr_lines * GRID_SIZE
+        && floor(next_horizantal_intersection_y) >= 0 && floor(next_horizantal_intersection_x) >= 0)
     {
-        y_steps *= -1;
-    }
-    map->ray.begin_x = map->player.x + (map->ray.begin_y - map->player.y) / tan(map->ray.ray_angle);
-    if (cos(map->ray.ray_angle) < 0 )
-    {
-        x_steps *= -1;
-    }
-    // printf("%f ", map->ray.ray_angle + degree_to_radian(30));
-    // printf("%f\n", map->player.rotation_angle);
-    map->ray.end_x = map->ray.begin_x;
-    map->ray.end_y = map->ray.begin_y;
-    while (floor(map->ray.end_x)   <  map->nbr_colums  && floor(map->ray.end_x) >= 0
-            && floor(map->ray.end_y) < map->nbr_lines && floor(map->ray.end_y) >= 0)
-    {
-        if (map->map[(int)floor(map->ray.end_y)][(int)floor(map->ray.end_x)] == '1'
-            || map->map[(int)floor(map->ray.end_y )][(int)floor(map->ray.end_x)] == '2'
-            || map->map[(int)floor(map->ray.end_y)][(int)floor(map->ray.end_x)] == '\0')
+        if (map->map[(int)(next_horizantal_intersection_y / GRID_SIZE)][(int)(next_horizantal_intersection_x / GRID_SIZE)] != '0')
         {
-            break;
+            map->ray.end_x = next_horizantal_intersection_x;
+            map->ray.end_y = next_horizantal_intersection_y;
+            draw_line(*map, map->player.x, map->player.y, map->ray.end_x, map->ray.end_y, 0xff0000);
+            return (map);
         }
-        map->ray.end_x += x_steps;
-        map->ray.end_y += y_steps;
+        else if (map->map[(int)(next_horizantal_intersection_y / GRID_SIZE)][(int)((next_horizantal_intersection_x + 1) / GRID_SIZE)] != '0')
+        {
+            map->ray.end_x = next_horizantal_intersection_x;
+            map->ray.end_y = next_horizantal_intersection_y;
+            draw_line(*map, map->player.x, map->player.y, map->ray.end_x, map->ray.end_y, 0xff0000);
+            return (map);
+        }
+        else
+        {
+            next_horizantal_intersection_x = map->player.x + step * angle_cos;
+            next_horizantal_intersection_y = map->player.y + step * angle_sin;
+            step += 1;
+        }
     }
-    printf("map->ray.end_x : %f ", map->ray.end_x);
-    printf("map->ray.end_y : %f\n", map->ray.end_y);
+    return map;
+}
+
+void    render_walls(t_map *map)
+{
+    double  distance_from_player_to_plane;
+    double  wall_height;
+    double  projected_wall_height;
+    double  distance_to_wall;
+
+    distance_to_wall = distance_between_two_points(map->player.x, map->player.y, map->ray.end_x, map->ray.end_y);
+    wall_height = GRID_SIZE;
+    distance_from_player_to_plane = (WINDOW_WIDTH / 2) / tan(map->player.field_of_view / 2);
+    projected_wall_height = (wall_height / distance_to_wall ) * distance_from_player_to_plane;
+}
+
+t_map   *casting_rays(t_map *map)
+{
+    double  ray_angle;
+
+    ray_angle = map->ray.ray_angle;
+    
+    for (int i = 0; i < map->ray.nbr_rays; i++)
+    {
+        map = cast_ray(map, ray_angle);
+        ray_angle += map->player.field_of_view / map->ray.nbr_rays;
+    }
     return (map);
 }
 
 int  render_mini_map(t_map *map)
 {
-    double old_playerX;
-    double old_playerY;
+    double old_player_x;
+    double old_player_y;
     double x;
     double y;
-    old_playerX = map->player.x;
-    old_playerY = map->player.y;
+    
+    old_player_x = map->player.x;
+    old_player_y = map->player.y;
     map = update_player_position(map);
-    map = cast_ray(map);
-
-    if (map->img.img)
-        mlx_destroy_image(map->mlx.mlx, map->img.img);
-    mlx_clear_window(map->mlx.mlx, map->mlx.win);
-    map->img.img = mlx_new_image(map->mlx.mlx, map->nbr_colums * GRID_SIZE, map->nbr_lines * GRID_SIZE);
-	map->img.addr = mlx_get_data_addr(map->img.img, &map->img.bits_per_pixel, &map->img.line_length, &map->img.endian);
     for (int i = 0; i < map->nbr_lines; i++)
     {
         for (int j = 0; map->map[i][j]; j++)
@@ -122,19 +108,24 @@ int  render_mini_map(t_map *map)
             }
         }
     }
-    if (map->map[(int)map->player.y][(int)old_playerX] == '1'
-        ||  map->map[(int)old_playerY][(int)map->player.x] == '1'
-        || map->map[(int)map->player.y][(int)map->player.x] == '2')
+    
+    if (map->map[(int)map->player.y / GRID_SIZE][(int)old_player_x / GRID_SIZE] == '1'
+        ||  map->map[(int)old_player_y / GRID_SIZE][(int)map->player.x / GRID_SIZE] == '1' 
+        || map->map[(int)map->player.y / GRID_SIZE][(int)map->player.x / GRID_SIZE] == '2')
     {
-            map->player.x = old_playerX;
-            map->player.y = old_playerY;
+            map->player.x = old_player_x;
+            map->player.y = old_player_y;
     }
-    map->img.size = 10;
-    draw_square(*map, map->player.y, map->player.x, 0x0000ff);
-    x = map->player.x * GRID_SIZE;
-    y = map->player.y * GRID_SIZE;
+    
+    for (int k = map->player.y - 3; k < (map->player.y + 3 ); k = k + 1)
+    {
+        for(int l = map->player.x - 3; l < (map->player.x + 3 ); l = l + 1)
+        {
+            my_mlx_pixel_put(&map->img, l, k, 0x0000ff);
+        }
+    }
+    x = map->player.x;
+    y = map->player.y;
     draw_line(*map, x, y, x + GRID_SIZE * cos(map->player.rotation_angle), y + GRID_SIZE * sin(map->player.rotation_angle),0x0000ff);
-    draw_line(*map, x, y, x + (map->ray.end_x) * cos(map->ray.ray_angle), y + (map->ray.end_y) * sin(map->ray.ray_angle), 0xff0000);
-    mlx_put_image_to_window(map->mlx.mlx, map->mlx.win, map->img.img, 0, 0);
     return (0);
 }
