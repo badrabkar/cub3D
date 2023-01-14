@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 05:06:12 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/05 17:52:17 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:25:59 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+
+#include "get_next_line.h"
 
 char	*readline(int fd, char *readline)
 {
@@ -55,6 +56,8 @@ char	*get_line(char *read)
 		line[i] = read[i];
 		i++;
 	}
+	// if (read[i] == '\n')
+	// 	line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }

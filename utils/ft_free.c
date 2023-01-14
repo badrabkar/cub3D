@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   degree_to_radian.c                                 :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 16:29:31 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/04 16:33:59 by babkar           ###   ########.fr       */
+/*   Created: 2023/01/12 14:14:35 by bmaaqoul          #+#    #+#             */
+/*   Updated: 2023/01/12 14:15:36 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-double  degree_to_radian(int degree)
+char	**ft_free(char **tab)
 {
-    return (degree * M_PI / 180);
+    int i;
+
+    i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	tab = NULL;
+	return (NULL);
 }

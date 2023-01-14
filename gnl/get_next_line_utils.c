@@ -6,12 +6,22 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 09:25:11 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/05 17:50:27 by babkar           ###   ########.fr       */
+/*   Updated: 2022/12/23 00:50:00 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "utils.h"
+#include "get_next_line.h"
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s != NULL && s[i])
+		i++;
+	return (i);
+}
 
 char	*ft_strjoin_gnl(char *s1, char *s2)
 {
@@ -39,4 +49,18 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	str[j] = '\0';
 	free(s1);
 	return (str);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s != NULL && s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (NULL);
 }

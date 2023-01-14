@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: babkar <babkar@student.42.fr>              +#+  +:+       +#+         #
+#    By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 23:52:21 by babkar            #+#    #+#              #
-#    Updated: 2023/01/05 18:06:17 by babkar           ###   ########.fr        #
+#    Updated: 2023/01/12 14:16:32 by bmaaqoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3D
 CFLAGS =  -Wextra -Wall -Werror
 LIBFT_PATH = libft/
 
-HEADERS = libft/libft.h srcs/cub3d.h utils/utils.h
+HEADERS =
 LIBFT = $(addprefix $(LIBFT_PATH), libft.a)
 SRCS = srcs/main.c \
 srcs/draw_line.c \
@@ -29,12 +29,15 @@ srcs/player_init.c \
 srcs/render_mini_map.c \
 srcs/update_player_position.c \
 srcs/window.c \
-utils/degree_to_radian.c \
-utils/ft_realloc.c \
-utils/print_map.c \
 utils/puterr.c \
-utils/get_next_line.c \
-utils/get_next_line_utils.c \
+utils/print_map.c \
+utils/ft_realloc.c \
+utils/ft_free.c \
+gnl/get_next_line.c \
+gnl/get_next_line_utils.c \
+srcs/check_map.c \
+srcs/skip_spaces.c \
+srcs/check_map_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -43,8 +46,8 @@ all : libft  $(NAME)
 libft:
 	make -C $(LIBFT_PATH)
 	
-%.o : %.c $(HEADERS)
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@ 
+%.o : %.c
+	$(CC) $(CFLAGS) $(HEADERS) -Imlx -c $< -o $@ 
 	
 $(NAME) : $(OBJS) $(LIBFT)
 	$(CC) $(OBJS) $(LIBFT) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
