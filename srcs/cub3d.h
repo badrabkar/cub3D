@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/12 17:56:58 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/14 02:45:44 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define D_KEY 2
 # define LEFT_ARROW_KEY 124
 # define RIGHT_ARROW_KEY 123
-# define GRID_SIZE 10
+# define GRID_SIZE 50
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 720
 # define WALL_STRIP_WIDTH 1
@@ -52,8 +52,10 @@ typedef	struct s_ray
 	double		begin_y;
 	double		end_x;
 	double		end_y;
-	double		y_steps;
-	double		x_steps;
+	double		horizontal_intersection_x;
+	double		horizontal_intersection_y;
+	double		vertical_intersection_x;
+	double		vertical_intersection_y;
 	int			nbr_rays;
 	double		ray_angle_speed;
 	double		ray_angle;
@@ -144,7 +146,7 @@ void	draw_line(t_map map, double beginX, double beginY, double endX, double endY
 void	print_map(t_map map);
 t_map	player_init(t_map  map);
 void	ft_window(t_mlx *mlx, t_map map);
-int 	render_mini_map(t_map *map);
+t_map	*render_mini_map(t_map *map);
 void    draw_line(t_map map, double beginX, double beginY, double endX, double endY, int color);
 void    draw_square(t_map map, double i, double j, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

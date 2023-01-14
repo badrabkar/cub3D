@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:06:07 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/13 13:05:17 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/13 23:50:38 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 //     distance_from_player_to_plane = (WINDOW_WIDTH / 2) / tan(map->player.field_of_view / 2);
 //     projected_wall_height = (wall_height / distance_to_wall ) * distance_from_player_to_plane;
 // }
+
 int render(t_map *map)
 {
     if (map->img.img)
@@ -32,9 +33,8 @@ int render(t_map *map)
     map->img.img = mlx_new_image(map->mlx.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	map->img.addr = mlx_get_data_addr(map->img.img, &map->img.bits_per_pixel, &map->img.line_length, &map->img.endian);
     
-    render_mini_map(map);
+    map = render_mini_map(map);
     map = casting_rays(map);
-    // render_walls(map);
     mlx_put_image_to_window(map->mlx.mlx, map->mlx.win, map->img.img, 0, 0);
     return (0);
 }

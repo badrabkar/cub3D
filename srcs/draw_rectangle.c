@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   distance_between_two_points.c                      :+:      :+:    :+:   */
+/*   draw_rectangle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 22:16:37 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/13 19:49:30 by babkar           ###   ########.fr       */
+/*   Created: 2023/01/13 13:32:31 by babkar            #+#    #+#             */
+/*   Updated: 2023/01/13 13:47:18 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "cub3d.h"
 
-double  distance_between_two_points(double a_x, double a_y, double b_x, double b_y)
+t_data  draw_rectangle(t_data img)
 {
-    return (sqrt(pow(b_x - a_x, 2) + pow(b_y - a_y, 2)));
+    for (int i = 0; i < (); i++)
+    {
+        for (int j = 0; j < WALL_STRIP_WIDTH; j++)
+        {
+            my_mlx_pixel_put(&img, i, j, 0xff0000);
+        }
+        
+    }
+    return (img);
 }
