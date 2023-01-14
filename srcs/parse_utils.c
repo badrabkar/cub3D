@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:52:15 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/03 15:25:11 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/12 17:20:23 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ int count_char(char *str, char c)
 	return (count);
 }
 
-char *skip_empty_line(int fd)
+char *skip_empty_line(char *line, int fd)
 {
-	char *line;
-	
 	line = get_next_line(fd);
 	while(line)
 	{
 		if (!empty_line(line))
 			break;
+		free (line);
 		line = get_next_line(fd);
 		if (!line)
             break;
