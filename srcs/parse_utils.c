@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:52:15 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/12 18:52:26 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 
 int	count_splited(char **str)

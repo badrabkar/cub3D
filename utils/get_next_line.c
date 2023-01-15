@@ -21,6 +21,7 @@ char	*readline(int fd, char *readline)
 	if (!buff)
 		return (NULL);
 	line = 1;
+
 	while (!ft_strchr(readline, '\n') && line > 0)
 	{
 		line = read(fd, buff, BUFFER_SIZE);
@@ -91,6 +92,7 @@ char	*get_next_line(int fd)
 {
 	static char	*read;
 	char		*line;
+
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

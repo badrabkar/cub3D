@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:32:31 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/13 13:47:18 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 t_data  draw_rectangle(t_data img)
 {

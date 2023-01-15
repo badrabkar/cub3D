@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:41:03 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/12 17:01:02 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 int ft_check_player(char **str)
 {

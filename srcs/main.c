@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:58:50 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/12 16:12:25 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:59:39 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 int	ft_exit(t_map *map)
 {
@@ -79,7 +79,7 @@ t_map   get_info(t_map map)
 int main(int argc, char **argv)
 {
     t_map   map;
-    
+
     if (argc != 2)
         return (1);
     map = parse(argv);
@@ -90,7 +90,6 @@ int main(int argc, char **argv)
     mlx_hook(map.mlx.win, 2, 0, ft_move, &map);
 	mlx_hook(map.mlx.win, 3, 0, ft_reset, &map);
     mlx_hook(map.mlx.win, 17, 0, ft_exit, &map);
-	// mlx_loop_hook(map.mlx.mlx, render_mini_map, &map);
 	mlx_loop_hook(map.mlx.mlx, render, &map);
     mlx_loop(&map.mlx);
     return 0;

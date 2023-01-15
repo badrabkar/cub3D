@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: babkar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/31 15:55:55 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
+/*   Created: 2021/11/15 14:45:20 by babkar            #+#    #+#             */
+/*   Updated: 2021/11/18 18:16:35 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "utils.h"
 
-#include "cub3D.h"
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*dst;
+	char	*string;
+	size_t	i;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	i = 0;
+	string = (char *)s;
+	string = ft_memset(s, '\0', n);
 }

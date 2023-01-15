@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 21:03:14 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/13 19:44:16 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 t_map player_init(t_map  map)
 {
@@ -37,7 +37,7 @@ t_map player_init(t_map  map)
     map.player.rotation_angle = map.player.rotation_speed * M_PI / 90;
     map.ray.ray_angle = map.ray.ray_angle_speed * M_PI / 90;
     map.ray.nbr_rays = (WINDOW_WIDTH) / WALL_STRIP_WIDTH;
-    map.player.move_speed = 2;
+    map.player.move_speed = 1;
     map.player.move_horizontaly = -1;
     map.player.move_verticaly = -1;
     map.player.rotate = -1;

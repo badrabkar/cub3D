@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 21:52:30 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/02 17:00:15 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+# include "cub3D.h"
 
 void    draw_line(t_map map, double beginX, double beginY, double endX, double endY, int color)
 {

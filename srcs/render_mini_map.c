@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:49:17 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/14 02:56:35 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 int equal(double a, double b)
 {
@@ -56,157 +56,6 @@ int equal(double a, double b)
 //     return map;
 // }
 
-t_map   *vertical_intersection(t_map *map, double ray_angle)
-{
-    double  x_steps;
-    double  y_steps;
-
-    x_steps = GRID_SIZE;
-    map->ray.begin_x = floor(map->player.x / GRID_SIZE) * GRID_SIZE;
-    if (cos(ray_angle) < 0)
-    {
-        x_steps *= -1;
-        map->ray.begin_x -= 1;
-    } 
-    else
-        map->ray.begin_x += GRID_SIZE;
-        
-    map->ray.begin_y = map->player.y + (map->ray.begin_x - map->player.x) * tan(ray_angle);
-    y_steps = x_steps * tan(ray_angle);
-    
-    map->ray.vertical_intersection_x = map->ray.begin_x;
-    map->ray.vertical_intersection_y = map->ray.begin_y;
-    while (floor(map->ray.vertical_intersection_x)   <  map->nbr_colums * GRID_SIZE  && floor(map->ray.vertical_intersection_x) >= 0
-            && floor(map->ray.vertical_intersection_y) < map->nbr_lines * GRID_SIZE && floor(map->ray.vertical_intersection_y) >= 0)
-    {
-        if (map->map[(int)floor(map->ray.vertical_intersection_y / GRID_SIZE)][(int)floor(map->ray.vertical_intersection_x / GRID_SIZE)] != '0')
-        {
-            return (map);
-        }
-        map->ray.vertical_intersection_x += x_steps;
-        map->ray.vertical_intersection_y += y_steps;
-    }
-    if (map->ray.vertical_intersection_x > map->nbr_colums * GRID_SIZE)
-    {
-        map->ray.vertical_intersection_x = map->nbr_colums * GRID_SIZE;
-    }
-    if (map->ray.vertical_intersection_y > map->nbr_lines * GRID_SIZE)
-    {
-        map->ray.vertical_intersection_y = map->nbr_lines * GRID_SIZE;
-    }
-    if (map->ray.vertical_intersection_x < 0)
-    {
-        map->ray.vertical_intersection_x = 0;
-    }
-    if (map->ray.vertical_intersection_y < 0)
-    {
-        map->ray.vertical_intersection_y = 0;
-    }
-    return (map);
-}
-
-t_map   *horizontal_intersection(t_map *map, double ray_angle)
-{
-    double  x_steps;
-    double  y_steps;
-
-    y_steps = GRID_SIZE;
-    map->ray.begin_y = floor(map->player.y / GRID_SIZE) * GRID_SIZE;
-    if (sin(ray_angle) < 0)
-    {
-        y_steps *= -1;
-        map->ray.begin_y -= 1;
-    }
-    else
-        map->ray.begin_y += GRID_SIZE;
-    map->ray.begin_x = map->player.x + (map->ray.begin_y - map->player.y) / tan(ray_angle);
-    x_steps = y_steps / tan(ray_angle);
-    
-    map->ray.horizontal_intersection_x = map->ray.begin_x;
-    map->ray.horizontal_intersection_y = map->ray.begin_y;
-    while (floor(map->ray.horizontal_intersection_x)   <  map->nbr_colums * GRID_SIZE  && floor(map->ray.horizontal_intersection_x) >= 0
-            && floor(map->ray.horizontal_intersection_y) < map->nbr_lines * GRID_SIZE && floor(map->ray.horizontal_intersection_y) >= 0)
-    {
-        if (map->map[(int)floor(map->ray.horizontal_intersection_y / GRID_SIZE)][(int)floor(map->ray.horizontal_intersection_x / GRID_SIZE)] != '0')
-        {
-            return (map);
-        }
-        map->ray.horizontal_intersection_x += x_steps;
-        map->ray.horizontal_intersection_y += y_steps;
-    }
-    if (map->ray.horizontal_intersection_x > map->nbr_colums * GRID_SIZE)
-    {
-        map->ray.horizontal_intersection_x = map->nbr_colums * GRID_SIZE;
-    }
-    if (map->ray.horizontal_intersection_y > map->nbr_lines * GRID_SIZE)
-    {
-        map->ray.horizontal_intersection_y = map->nbr_lines * GRID_SIZE;
-    }
-    if (map->ray.horizontal_intersection_x < 0)
-    {
-        map->ray.horizontal_intersection_x = 0;
-    }
-    if (map->ray.horizontal_intersection_y < 0)
-    {
-        map->ray.horizontal_intersection_y = 0;
-    }
-    return (map);
-}
-t_map   *cast_ray(t_map *map, double ray_angle)
-{
-    double  horizontal_distance;
-    double  vertical_distance;
-    map = horizontal_intersection(map, ray_angle);
-    map = vertical_intersection(map, ray_angle);
-
-    horizontal_distance = distance_between_two_points(map->player.x, map->player.y, map->ray.horizontal_intersection_x, map->ray.horizontal_intersection_y);
-    vertical_distance = distance_between_two_points(map->player.x, map->player.y, map->ray.vertical_intersection_x, map->ray.vertical_intersection_y);
-    if (horizontal_distance < vertical_distance)
-    {
-        draw_line(*map, map->player.x, map->player.y, map->ray.horizontal_intersection_x,map->ray.horizontal_intersection_y,0x0000ff);
-    }
-    else
-    {
-         draw_line(*map, map->player.x, map->player.y, map->ray.vertical_intersection_x,map->ray.vertical_intersection_y,0x0000ff);
-    }
-    return (map);
-}
-
-
-void    render_walls(t_map *map, int x)
-{
-    double  distance_from_player_to_plane;
-    double  wall_height;
-    double  projected_wall_height;
-    double  distance_to_wall;
-
-    distance_to_wall = distance_between_two_points(map->player.x, map->player.y, map->ray.end_x, map->ray.end_y);
-    wall_height = GRID_SIZE ;
-    distance_from_player_to_plane = ((double)(WINDOW_HEIGHT) / 2) / tan(map->player.field_of_view / 2);
-    projected_wall_height = (wall_height * distance_from_player_to_plane / distance_to_wall );
-    
-    double start = ((double)WINDOW_HEIGHT - projected_wall_height)/2;
-
-    for (int i = start; i < start + projected_wall_height && i < WINDOW_HEIGHT; i = i + 1)
-    {
-        my_mlx_pixel_put(&map->img, x, i, 0xff0000);
-    } 
-}
-
-t_map   *casting_rays(t_map *map)
-{
-    double  ray_angle;
-
-    ray_angle = map->ray.ray_angle;
-    
-    // for (int i = 0; i < map->ray.nbr_rays; i++)
-    // {
-        map = cast_ray(map, ray_angle);
-        // render_walls(map, i);
-    //     ray_angle += (double)map->player.field_of_view / map->ray.nbr_rays;
-    // }
-    return (map);
-}
 
 t_map *render_mini_map(t_map *map)
 {
@@ -252,6 +101,7 @@ t_map *render_mini_map(t_map *map)
     }
     x = map->player.x;
     y = map->player.y;
+    map = casting_rays(map);
     draw_line(*map, x, y, x + GRID_SIZE * cos(map->player.rotation_angle), y + GRID_SIZE * sin(map->player.rotation_angle),0x0000ff);
     return (map);
 }

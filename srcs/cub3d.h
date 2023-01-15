@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/14 02:45:44 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:23:19 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
-# include "../libft/libft.h"
-# include "../utils/utils.h"
+#ifndef cub3D_H
+# define cub3D_H
+
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
 # include <mlx.h>
+# include "../utils/utils.h"
+# include <math.h>
 
 # define ESC_KEY 53
 # define W_KEY 13
@@ -26,11 +27,10 @@
 # define D_KEY 2
 # define LEFT_ARROW_KEY 124
 # define RIGHT_ARROW_KEY 123
-# define GRID_SIZE 50
+# define GRID_SIZE 10
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 720
 # define WALL_STRIP_WIDTH 1
-# include <math.h>
 
 
 typedef struct s_color
@@ -56,6 +56,8 @@ typedef	struct s_ray
 	double		horizontal_intersection_y;
 	double		vertical_intersection_x;
 	double		vertical_intersection_y;
+	double		vertical_distance;
+	double		horizontal_distance;
 	int			nbr_rays;
 	double		ray_angle_speed;
 	double		ray_angle;
@@ -110,7 +112,7 @@ t_map   *casting_rays(t_map *map);
 void check_map(char **str, t_map *map);
 void check_ext(char *av);
 int check_spaces(char **str);
-int check_space(char **str);
+int check_space(char **str); 
 int skip_inner_spaces1(char **str, int i, int j);
 int skip_inner_spaces(char **str, int i, int j);
 int skip_backward_spaces(char **str, int i);
@@ -141,7 +143,7 @@ int	    empty_line(char *line);
 t_map	parse(char **argv);
 
 void	draw_line(t_map map, double beginX, double beginY, double endX, double endY, int color);
-
+void	bresenham(t_map map, double x0, double y0, double x1, double y1, double c);
 
 void	print_map(t_map map);
 t_map	player_init(t_map  map);
@@ -152,4 +154,12 @@ void    draw_square(t_map map, double i, double j, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_map	*update_player_position(t_map *map);
 double  normalizeAngle(double angle);
+
+
+t_map   *render_walls(t_map *map);
+
+t_map   *casting_rays(t_map *map);
+t_map   *cast_ray(t_map *map, double ray_angle);
+
+int	create_trgb(int t, int r, int g, int b);
 #endif
