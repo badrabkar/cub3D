@@ -6,7 +6,7 @@
 #    By: babkar <babkar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 23:52:21 by babkar            #+#    #+#              #
-#    Updated: 2023/01/15 01:19:54 by babkar           ###   ########.fr        #
+#    Updated: 2023/01/17 21:24:51 by babkar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ srcs/render_mini_map.c \
 srcs/render_walls.c \
 srcs/render.c \
 srcs/skip_spaces.c \
+srcs/textures_init.c \
 srcs/update_player_position.c \
 srcs/window.c \
 utils/bresenham.c \

@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:58:50 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 01:59:39 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/17 21:28:52 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ int main(int argc, char **argv)
     if (argc != 2)
         return (1);
     map = parse(argv);
-    print_map(map);
 	ft_window(&map.mlx, map);
+    print_map(map);
     map = get_info(map);
     map = player_init(map);
+    map = textures_init(map);
     mlx_hook(map.mlx.win, 2, 0, ft_move, &map);
 	mlx_hook(map.mlx.win, 3, 0, ft_reset, &map);
     mlx_hook(map.mlx.win, 17, 0, ft_exit, &map);

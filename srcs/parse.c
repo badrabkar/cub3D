@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:54:14 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:57:55 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_map	parse(char **argv)
 {
 	int		fd;
 	char	*line;
-	t_map	map = {.east_texture = NULL, .west_texture = NULL, .north_texture = NULL, .south_texture = NULL, .map = NULL};
+	t_map	map = {.map = NULL};
 	char	**map_str;
 	
 	line = NULL;
@@ -24,7 +24,6 @@ t_map	parse(char **argv)
 	fd = open(argv[1], O_RDWR);
 	if (fd == -1)
 		puterr("fd error\n");
-			
 	map = parse_identifiers(line, fd, map);
 	line = skip_empty_line(fd);
 	if (!line)
@@ -39,5 +38,6 @@ t_map	parse(char **argv)
 	}
 	check_map(map_str, &map);
 	ft_free(map_str);
+	close(fd);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 01:23:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/19 02:36:29 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@
 # define D_KEY 2
 # define LEFT_ARROW_KEY 124
 # define RIGHT_ARROW_KEY 123
-# define GRID_SIZE 10
+# define GRID_SIZE 64
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 720
 # define WALL_STRIP_WIDTH 1
+
 
 
 typedef struct s_color
@@ -38,6 +39,7 @@ typedef struct s_color
 	int red;
 	int green;
 	int blue;
+	int	trgb;
 }t_color;
 
 typedef struct s_mlx
@@ -81,25 +83,30 @@ typedef struct	s_data
 {
 	void	*img;
 	char	*addr;
+	int		*addr_int;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 	int		size;
 	
-}				t_data;
+}				t_img;
 
 typedef struct s_map
 {
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
+	char	*north_texture_xpm;
+	char	*south_texture_xpm;
+	char	*west_texture_xpm;
+	char	*east_texture_xpm;
+	t_img	north_texture;
+	t_img	south_texture;
+	t_img	west_texture;
+	t_img	east_texture;
 	t_ray	ray;
 	t_color	floor;
 	t_color	ceiling;
 	t_mlx	mlx;
 	t_player player;
-	t_data	img;
+	t_img	img;
 	int		nbr_colums;
 	int		nbr_lines;
 	char	**map;
@@ -108,6 +115,7 @@ typedef struct s_map
 int		render(t_map *map);
 
 t_map   *casting_rays(t_map *map);
+t_map   textures_init(t_map map);
 
 void check_map(char **str, t_map *map);
 void check_ext(char *av);
@@ -151,7 +159,7 @@ void	ft_window(t_mlx *mlx, t_map map);
 t_map	*render_mini_map(t_map *map);
 void    draw_line(t_map map, double beginX, double beginY, double endX, double endY, int color);
 void    draw_square(t_map map, double i, double j, int color);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 t_map	*update_player_position(t_map *map);
 double  normalizeAngle(double angle);
 

@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:53:38 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/17 16:21:25 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,18 @@ int	parse_north_texture(char *texture, t_map *map)
 	int	fd;
 	
 	if (done == 1)
-		puterr("check the textures again please\n");
+		puterr("The north texture is defined!\n");
 	i = 2;
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
 	if (!check_extension(texture))
 		puterr("Check the Extension please!\n");
+	map->north_texture_xpm = texture;
 	fd = open(texture, O_RDONLY);
-	// if (fd == -1)
-	// 	puterr();
-	map->north_texture = texture;
-	free (texture);
+	if (fd == -1)
+		puterr("File not found!");
+	close(fd);
 	done = 1;
 	return (1);
 }
@@ -73,20 +73,20 @@ int	parse_south_texture(char *texture, t_map *map)
 	int	i;
 	static int	done;
 	int			fd;
-	
+
 	if (done == 1)
-		puterr("check the textures again please\n");
+		puterr("The south texture is defined!\n");
 	i = 2;
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
 	if (!check_extension(texture))
 		puterr("Check the Extension please!\n");
+	map->south_texture_xpm = texture;
 	fd = open(texture, O_RDONLY);
-	// if (fd == -1)
-	// 	puterr();
-	map->south_texture = texture;
-	free (texture);
+	if (fd == -1)
+		puterr("File not found!");
+	close(fd);
 	done = 1;
 	return (1);
 }
@@ -98,18 +98,18 @@ int	parse_west_texture(char *texture, t_map *map)
 	int			fd;
 
 	if (done == 1)
-		puterr("check the textures again please\n");
+		puterr("The west texture is defined!\n");
 	i = 2;
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
 	if (!check_extension(texture))
 		puterr("Check the Extension please!\n");
+	map->west_texture_xpm = texture;
 	fd = open(texture, O_RDONLY);
-	// if (fd == -1)
-	// 	puterr();
-	map->west_texture = texture;
-	free (texture);
+	if (fd == -1)
+		puterr("File not found!");
+	close(fd);
 	done = 1;
 	return (1);
 }
@@ -121,18 +121,18 @@ int	parse_east_texture(char *texture, t_map *map)
 	int			fd;
 	
 	if (done == 1)
-		puterr("check the textures again please\n");
+		puterr("The east texture is defined!\n");
 	i = 2;
 	while (texture[i] && texture[i] == ' ')
 		i++;
 	texture = ft_substr(texture, i + 2, ft_strlen(texture));
 	if (!check_extension(texture))
 		puterr("Check the Extension please!\n");
+	map->east_texture_xpm = texture;
 	fd = open(texture, O_RDONLY);
-	// if (fd == -1)
-	// 	puterr();
-	map->east_texture = texture;
-	free (texture);
+	if (fd == -1)
+		puterr("File not found!");
+	close(fd);
 	done = 1;
 	return (1);
 }
@@ -143,7 +143,6 @@ t_map	parse_identifiers(char *line, int fd, t_map map)
 	
 	counter = 0;
 	line = get_next_line(fd);
-
 	while (line)
 	{
 		if (line[0] == 'F' && line[1] == ' ')
@@ -164,5 +163,7 @@ t_map	parse_identifiers(char *line, int fd, t_map map)
 	}
 	if (counter != 6)
 		puterr("check the map again please\n");
+	if (map.floor.trgb == map.ceiling.trgb)
+		puterr("Floor and ceiling have the same color!\n");
 	return (map);
 }

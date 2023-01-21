@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 05:00:55 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/15 19:18:14 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	parse_color_floor(char *color, t_color *floor)
 	if (floor->blue < 0 || floor->blue > 255)
 		puterr("check the color floor line\n");
 	done = 1;
+	floor->trgb = create_trgb(0, floor->red, floor->green, floor->blue);
 	ft_free(splited);
 	free (color);
 	return (1);
@@ -63,6 +64,7 @@ int	parse_color_ceiling(char *color, t_color *ceiling)
 	if (ceiling->blue < 0 || ceiling->blue > 255)
 		puterr("check the color ceiling line\n");
 	done = 1;
+	ceiling->trgb = create_trgb(0, ceiling->red, ceiling->green, ceiling->blue);
 	ft_free(splited);
 	free (color);
 	return (1);

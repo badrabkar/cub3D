@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 21:03:14 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/19 01:35:58 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ t_map player_init(t_map  map)
     if (map.player.view == 'S')
     {
         map.player.rotation_speed = 45;
-        map.ray.ray_angle_speed = 45;
+        map.ray.ray_angle_speed = 30;
     }
     if (map.player.view == 'E')
     {
         map.player.rotation_speed = 0;
-        map.ray.ray_angle_speed  = 0;
+        map.ray.ray_angle_speed  = 165;
     }
     if (map.player.view == 'W')
     {
         map.player.rotation_speed = 90;
-         map.ray.ray_angle_speed  = 90;
+         map.ray.ray_angle_speed  = 75;
     }
     map.player.rotation_angle = map.player.rotation_speed * M_PI / 90;
     map.ray.ray_angle = map.ray.ray_angle_speed * M_PI / 90;
     map.ray.nbr_rays = (WINDOW_WIDTH) / WALL_STRIP_WIDTH;
-    map.player.move_speed = 1;
+    map.player.move_speed = (double)GRID_SIZE / 10;
     map.player.move_horizontaly = -1;
     map.player.move_verticaly = -1;
     map.player.rotate = -1;
