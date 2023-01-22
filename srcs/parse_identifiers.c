@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:53:38 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/17 16:21:25 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/21 16:27:19 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,10 @@ t_map	parse_identifiers(char *line, int fd, t_map map)
 			counter += parse_east_texture(line, &map);
 		if (counter == 6)
 			break;
+		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	if (counter != 6)
 		puterr("check the map again please\n");
 	if (map.floor.trgb == map.ceiling.trgb)

@@ -1,5 +1,6 @@
 #include <mlx.h>
 #include <stdio.h>
+#include <math.h>
 
 typedef struct	s_data
 {
@@ -20,18 +21,6 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_img	img;
-
-	int	width = 60;
-	int	height = 60;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	img.img = mlx_xpm_file_to_image(mlx, "./textures/bluestone.xpm", &width, &height);
-	img.addr = mlx_get_img_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	printf("%s\n", img.addr);
-	printf("bits per pixel : %d\n", img.bits_per_pixel);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	printf("%f\n", sin(M_PI / 2 - M_PI / 6));
+	printf("%f\n", sin(3 * M_PI / 2 - M_PI / 6));
 }

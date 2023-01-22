@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:04:52 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/21 13:34:43 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/21 23:24:21 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ void    render_wall(t_map *map, int x, double ray_angle)
         distance_to_wall = distance_between_two_points(map->player.x, map->player.y, map->ray.vertical_intersection_x, map->ray.vertical_intersection_y);
         texture_x = ((int)map->ray.vertical_intersection_y % GRID_SIZE);
     }
+    
     distance_to_wall *= cos(ray_angle - map->player.rotation_angle);
-    distance_from_player_to_plane = ((double)(WINDOW_HEIGHT) / 2) / tan(map->player.field_of_view / 2);
+    distance_from_player_to_plane = ((double)(WINDOW_WIDTH) / 2) / tan(map->player.field_of_view / 2);
     projected_wall_height = (GRID_SIZE / distance_to_wall) * distance_from_player_to_plane;
     
     int wall_strip_start =  (WINDOW_HEIGHT / 2) - ((int)projected_wall_height / 2);
@@ -64,7 +65,7 @@ void    render_wall(t_map *map, int x, double ray_angle)
         wall_strip_start = 0;
     int wall_strip_end = wall_strip_start +  (int)projected_wall_height;
     
-    while (wall_strip_start <= wall_strip_end && wall_strip_start < WINDOW_HEIGHT)
+    while (wall_strip_start <= wall_strip_end && wall_strip_start < WINDOW_HEIGHT -1)
     {
         int texture_y = (wall_strip_start + ((int)projected_wall_height / 2) - (WINDOW_HEIGHT / 2)) * ((float)GRID_SIZE / (int)projected_wall_height);
         texture_y *= GRID_SIZE;

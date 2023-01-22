@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 21:23:44 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/20 18:27:16 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/21 16:13:25 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,9 @@ t_map   textures_init(t_map map)
     map.south_texture.addr_int = (int *)mlx_get_data_addr(map.south_texture.img, &map.south_texture.bits_per_pixel, &map.south_texture.line_length, &map.south_texture.endian);
     if (!map.south_texture.addr_int)
         puterr("mlx_get_data_addr failed!");
+    free(map.east_texture_xpm);
+    free(map.south_texture_xpm);
+    free(map.north_texture_xpm);
+    free(map.west_texture_xpm);
     return (map);
 }
