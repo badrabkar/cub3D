@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "chrono": "c",
+        "cub3d.h": "c",
+        "mlx.h": "c",
+        "utils.h": "c"
+    }
+}
