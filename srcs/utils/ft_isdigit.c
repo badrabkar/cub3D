@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: babkar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 17:40:54 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 19:07:04 by babkar           ###   ########.fr       */
+/*   Created: 2021/11/14 19:19:38 by babkar            #+#    #+#             */
+/*   Updated: 2021/11/14 19:19:50 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "utils.h"
 
-#include "cub3D.h"
-
-void	ft_window(t_mlx *mlx, t_map map)
+int	ft_isdigit(int c)
 {
-	(void)map;
-	mlx->mlx = mlx_init();
-	mlx->win  = mlx_new_window(mlx->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D");
+	if (c >= 48 && c <= 57)
+		return (1);
+	else
+		return (0);
 }

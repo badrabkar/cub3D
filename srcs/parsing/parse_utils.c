@@ -6,12 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:52:15 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/24 19:44:31 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-
+#include "../cub3D.h"
 
 int	count_splited(char **str)
 {
@@ -23,7 +22,7 @@ int	count_splited(char **str)
 	return (i);
 }
 
-int count_char(char *str, char c)
+int	count_char(char *str, char c)
 {
 	int	i;
 	int	count;
@@ -39,21 +38,21 @@ int count_char(char *str, char c)
 	return (count);
 }
 
-char *skip_empty_line(int fd)
+char	*skip_empty_line(int fd)
 {
-	char *line;
-	
+	char	*line;
+
 	line = get_next_line(fd);
-	while(line)
+	while (line)
 	{
 		if (!empty_line(line))
-			break;
+			break ;
 		free (line);
 		line = get_next_line(fd);
 		if (!line)
-            break;
+			break ;
 	}
-    return (line);
+	return (line);
 }
 
 int	empty_line(char *line)
@@ -71,4 +70,3 @@ int	empty_line(char *line)
 	}
 	return (1);
 }
-

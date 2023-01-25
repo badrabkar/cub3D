@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:30:17 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/24 11:51:37 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 int skip_first_spaces(char **str, int i)
 {
@@ -48,7 +48,11 @@ int skip_inner_spaces(char **str, int i, int j)
 int skip_inner_spaces1(char **str, int i, int j)
 {
 	while (str[i] && str[i][j] == '2')
+	{
 		i--;
+		if (i < 0)
+			return (1);
+	}
 	if (str[i] && str[i][j] != '1')
 		return (0);
 	return (1);

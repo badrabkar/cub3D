@@ -6,11 +6,11 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 18:44:34 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/15 01:20:19 by babkar           ###   ########.fr       */
+/*   Updated: 2023/01/24 20:05:08 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 int	check_walls(char *str)
 {
@@ -70,8 +70,8 @@ void check(char **str)
 	}
 }
 
-void check_map(char **str, t_map *map)
+void check_map(char **str, t_game *game)
 {
-	map = parse_map(str, map);
-	check(map->map);
+	game = parse_map(str, game);
+	check(game->map);
 }
