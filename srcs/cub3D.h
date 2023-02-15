@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:00:58 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/28 20:21:00 by babkar           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:51:52 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@
 # define LEFT_ARROW_KEY 123
 # define RIGHT_ARROW_KEY 124
 # define GRID_SIZE 64
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 720
+# define WINDOW_WIDTH 500
+# define WINDOW_HEIGHT 500
 # define WALL_STRIP_WIDTH 1
 
 int		render(t_game *map);
+t_game	*render_minimap(t_game *game);
 t_game	player_init(t_game game);
 void	ft_window(t_mlx *mlx, t_game game);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

@@ -6,7 +6,7 @@
 #    By: babkar <babkar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 23:52:21 by babkar            #+#    #+#              #
-#    Updated: 2023/01/28 20:55:57 by babkar           ###   ########.fr        #
+#    Updated: 2023/02/04 18:45:18 by babkar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS =  -Wextra -Wall -Werror
 HEADERS =  srcs/cub3D.h srcs/utils/utils.h srcs/parsing/parsing.h srcs/initialization/initialization.h
 
 SRCS = srcs/main.c \
+srcs/initialization/door_init.c \
 srcs/initialization/initialize_struct.c \
 srcs/initialization/player_init.c \
 srcs/initialization/ray_init.c \
@@ -31,6 +32,7 @@ srcs/parsing/parse.c \
 srcs/parsing/parse_utils.c \
 srcs/parsing/parse_second_identifiers.c \
 srcs/game/casting_rays.c \
+srcs/game/render_minimap.c \
 srcs/game/render_walls.c \
 srcs/game/render.c \
 srcs/game/update_player_position.c \

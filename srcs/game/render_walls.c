@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:04:52 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/27 04:29:39 by babkar           ###   ########.fr       */
+/*   Updated: 2023/02/04 23:41:44 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ int	*get_color_from_texture(t_game *game, double ray_angle)
 {
 	if (game->ray.h_dist < game->ray.v_dist)
 	{
+		if (game->map[(int)(game->ray.h_intrsct_y / GRID_SIZE) - 1]
+			[(int)(game->ray.h_intrsct_x / GRID_SIZE)] == '3')
+			return (game->door.addr_int);
 		if (ray_angle >= M_PI && ray_angle <= 2 * M_PI)
 			return (game->n_texture.addr_int);
 		else
@@ -23,6 +26,9 @@ int	*get_color_from_texture(t_game *game, double ray_angle)
 	}
 	else
 	{
+		if (game->map[(int)(game->ray.v_intrsct_y / GRID_SIZE)]
+			[(int)(game->ray.v_intrsct_x / GRID_SIZE) - 1] == '3')
+			return (game->door.addr_int);
 		if (cos(ray_angle) > 0)
 			return (game->e_texture.addr_int);
 		else
@@ -39,10 +45,10 @@ float	calculate_wall_heigth(t_game *game, double ray_angle)
 
 	if (game->ray.h_dist < game->ray.v_dist)
 		distance_to_wall = dist_between_two_points(game->player.x,
-				game->player.y, game->ray.h_intrsct_x, game->ray.h_intrsct_y);
+			game->player.y, game->ray.h_intrsct_x, game->ray.h_intrsct_y);
 	else
 		distance_to_wall = dist_between_two_points(game->player.x,
-				game->player.y, game->ray.v_intrsct_x, game->ray.v_intrsct_y);
+			game->player.y, game->ray.v_intrsct_x, game->ray.v_intrsct_y);
 	distance_to_wall *= cos(ray_angle - game->player.rotation_angle);
 	distance_from_player_to_plane = ((double)(WINDOW_WIDTH) / 2)
 		/ tan(game->player.field_of_view / 2);
@@ -95,6 +101,7 @@ t_game	*render_walls(t_game *game)
 	ray_angle = game->ray.angle;
 	while (i < game->ray.nbr_rays)
 	{
+		game->ray.index = i;
 		game = cast_ray(game, ray_angle);
 		render_wall(game, i, ray_angle);
 		ray_angle += game->player.field_of_view / game->ray.nbr_rays;

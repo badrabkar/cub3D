@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:08:13 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/27 04:29:39 by babkar           ###   ########.fr       */
+/*   Updated: 2023/02/05 22:25:12 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 t_game	*v_intrsct(t_game *game, double angle, double y_steps, double x_steps)
 {
 	double	tmp;
+	static int		counter;
 
+	counter++;
 	while (game->ray.v_intrsct_x < game->nbr_colums * GRID_SIZE
 		&& game->ray.v_intrsct_x >= 0
 		&& game->ray.v_intrsct_y < game->nbr_lines * GRID_SIZE
@@ -27,8 +29,22 @@ t_game	*v_intrsct(t_game *game, double angle, double y_steps, double x_steps)
 		if (cos(angle) > 0)
 			tmp++;
 		if (game->map[(int)(game->ray.v_intrsct_y / GRID_SIZE)]
-			[(int)(tmp / GRID_SIZE)] != '0')
+			[(int)(tmp / GRID_SIZE)] == '1')
 			return (game);
+		if (game->map[(int)(game->ray.v_intrsct_y / GRID_SIZE)]
+			[(int)(tmp / GRID_SIZE)] == '3' && fabs(game->player.x - tmp) > 100)
+			return (game);
+		if (game->map[(int)(game->ray.v_intrsct_y / GRID_SIZE)]
+			[(int)(tmp / GRID_SIZE)] == '3' && fabs(game->player.x - tmp) < 100)
+			{
+				game->ray.index++;
+				printf("%d\n", game->ray.index);
+				if (game->ray.index == 32)
+				{
+					game->ray.index = 0;
+					return (game);
+				}
+			}
 		game->ray.v_intrsct_x += x_steps;
 		game->ray.v_intrsct_y += y_steps;
 	}
@@ -39,7 +55,7 @@ t_game	*vertical_intersection(t_game *game, double ray_angle)
 {
 	double	x_steps;
 	double	y_steps;
-
+	
 	x_steps = GRID_SIZE;
 	game->ray.begin_x = (int)(game->player.x / GRID_SIZE) * GRID_SIZE;
 	if (cos(ray_angle) < 0)

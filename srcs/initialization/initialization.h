@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 02:45:01 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/29 01:55:12 by babkar           ###   ########.fr       */
+/*   Updated: 2023/02/04 23:41:18 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_ray
 	double	h_dist;
 	int		nbr_rays;
 	double	angle_speed;
+	int		index;
 	double	angle;
 }t_ray;
 
@@ -72,6 +73,7 @@ typedef struct s_player
 	double	rotation_angle;
 	double	move_speed;
 	double	rotation_speed;
+	int		mouse;
 }t_player;
 
 typedef struct s_img
@@ -83,6 +85,8 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 	int		size;
+	int		width;
+	int		heigth;
 }t_img;
 
 typedef struct s_game
@@ -95,6 +99,7 @@ typedef struct s_game
 	t_img		s_texture;
 	t_img		w_texture;
 	t_img		e_texture;
+	t_img		door;
 	t_ray		ray;
 	t_color		floor;
 	t_color		ceiling;
@@ -111,6 +116,7 @@ typedef struct s_game
 t_game	initialize_struct(void);
 t_game	player_init(t_game	game);
 t_game	ray_init(t_game	map);
+t_game	door_texture(t_game game);
 t_game	textures_init(t_game game);
 void	ft_window(t_mlx *mlx, t_game game);
 

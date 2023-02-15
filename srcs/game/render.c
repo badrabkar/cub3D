@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:06:07 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/27 04:29:39 by babkar           ###   ########.fr       */
+/*   Updated: 2023/02/05 22:22:42 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	render(t_game *game)
 	render_ceiling(game);
 	render_floor(game);
 	game = render_walls(game);
+	game = render_minimap(game);
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->img.img, 0, 0);
 	return (0);
 }

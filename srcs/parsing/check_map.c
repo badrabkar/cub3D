@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 18:44:34 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2023/01/28 19:38:09 by babkar           ###   ########.fr       */
+/*   Updated: 2023/02/04 20:32:47 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	check(char **str)
 void	check_map(char **str, t_game *game)
 {
 	game = parse_map(str, game);
-	check(game->map);
+	// check(game->map);
 }

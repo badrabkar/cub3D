@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 04:54:14 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/29 01:51:53 by babkar           ###   ########.fr       */
+/*   Updated: 2023/02/04 20:28:36 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_game	parse_identifiers(t_game game)
 
 t_game	parse(char **argv, t_game game)
 {
-	game.parse.map_str = NULL;
 	game.parse.fd = open(argv[1], O_RDWR);
 	if (game.parse.fd == -1)
 		puterr("fd error\n");

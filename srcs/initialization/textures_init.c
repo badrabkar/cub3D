@@ -6,7 +6,7 @@
 /*   By: babkar <babkar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 21:23:44 by babkar            #+#    #+#             */
-/*   Updated: 2023/01/27 04:29:39 by babkar           ###   ########.fr       */
+/*   Updated: 2023/02/04 19:48:37 by babkar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_game	textures_init(t_game game)
 	game = west_texture(game, width, heigth);
 	game = north_texture(game, width, heigth);
 	game = south_texture(game, width, heigth);
+	game = door_texture(game);
 	free(game.e_texture_xpm);
 	free(game.s_texture_xpm);
 	free(game.n_texture_xpm);
